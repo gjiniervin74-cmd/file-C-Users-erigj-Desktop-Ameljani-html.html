@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apartamente në Shëngjin Ameliani</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    background:#f4f7fa;
+    color:#222;
+}
+
+/* HEADER */
+header{
+    background:linear-gradient(135deg,#0077b6,#00b4d8);
+    color:white;
+    text-align:center;
+    padding:40px 20px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.15);
+}
+
+header h1{font-size:40px;}
+header p{margin-top:10px; opacity:0.9;}
+
+/* NAV */
+nav{
+    display:flex;
+    justify-content:center;
+    gap:35px;
+    background:#023e8a;
+    padding:15px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-weight:600;
+    transition:0.3s;
+}
+
+nav a:hover{color:#90e0ef;}
+
+/* HERO */
+.hero{
+    height:400px;
+    background:
+    linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),
+    url(img1.jpg) center/cover;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-size:2.8em;
+    font-weight:700;
+    text-align:center;
+}
+
+/* SECTION */
+.container{
+    padding:70px 7%;
+}
+
+.container h2{
+    text-align:center;
+    font-size:36px;
+    color:#023e8a;
+    margin-bottom:40px;
+}
+
+/* GALLERY (FIXED) */
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:20px;
+}
+
+.gallery-item{
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,0.12);
+    cursor:pointer;
+    background:white;
+}
+
+.gallery-item img{
+    width:100%;
+    height:260px;
+    object-fit:cover;
+    transition:0.4s;
+}
+
+.gallery-item:hover img{
+    transform:scale(1.07);
+}
+
+/* LIGHTBOX */
+.lightbox{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.92);
+    justify-content:center;
+    align-items:center;
+    z-index:999;
+}
+
+.lightbox img{
+    max-width:90%;
+    max-height:85%;
+    border-radius:12px;
+}
+
+/* CONTACT */
+.contact-section{
+    padding:80px 7%;
+    background:white;
+}
+
+.contact-section h2{
+    text-align:center;
+    font-size:38px;
+    color:#023e8a;
+    margin-bottom:50px;
+}
+
+.contact-container{
+    display:flex;
+    gap:40px;
+    flex-wrap:wrap;
+}
+
+/* INFO */
+.contact-info{
+    flex:1;
+    min-width:300px;
+}
+
+.info-box{
+    background:#f8fafc;
+    padding:25px;
+    border-radius:18px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+
+.info-box p{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:15px;
+    font-size:16px;
+}
+
+.info-box i{
+    width:40px;
+    height:40px;
+    background:#0077b6;
+    color:white;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+/* MAP */
+.map-container iframe{
+    width:100%;
+    height:350px;
+    border:none;
+    border-radius:15px;
+    margin-top:20px;
+}
+
+/* FORM */
+.contact-form{
+    flex:1;
+    min-width:300px;
+    background:#f8fafc;
+    padding:30px;
+    border-radius:18px;
+}
+
+.contact-form input,
+.contact-form textarea{
+    width:100%;
+    padding:14px;
+    margin-bottom:15px;
+    border-radius:12px;
+    border:1px solid #ddd;
+}
+
+.contact-form button{
+    width:100%;
+    padding:15px;
+    background:linear-gradient(135deg,#00b4d8,#0077b6);
+    color:white;
+    border:none;
+    border-radius:12px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:20px;
+    background:#023e8a;
+    color:white;
+    margin-top:40px;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    header h1{font-size:28px;}
+    .hero{font-size:1.8em;}
+}
+.insta-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    padding:15px 28px;
+    background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);
+    color:white;
+    text-decoration:none;
+    border-radius:14px;
+    font-weight:700;
+    font-size:16px;
+    transition:0.3s ease;
+    box-shadow:0 10px 25px rgba(214,41,118,0.35);
+    position:relative;
+    overflow:hidden;
+}
+
+/* hover efekt modern */
+.insta-btn:hover{
+    transform:scale(1.07);
+    box-shadow:0 15px 35px rgba(214,41,118,0.5);
+}
+
+/* efekt shine */
+.insta-btn::after{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100%;
+    background:rgba(255,255,255,0.25);
+    transform:skewX(-25deg);
+    transition:0.5s;
+}
+
+.insta-btn:hover::after{
+    left:120%;
+}
+.apartment-block{
+    margin-bottom:60px;
+}
+
+.apartment-block h3{
+    font-size:26px;
+    color:#023e8a;
+    margin-bottom:20px;
+    border-left:5px solid #00b4d8;
+    padding-left:12px;
+}
+
+.apartment-gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+}
+
+.apartment-gallery img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    border-radius:15px;
+    cursor:pointer;
+    transition:0.3s;
+    box-shadow:0 8px 20px rgba(0,0,0,0.1);
+}
+
+.apartment-gallery img:hover{
+    transform:scale(1.05);
+}
+.ap1{
+    border-left-color: #222;
+    font-size: x-large;
+    margin: auto;
+    margin-bottom: 50px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Apartamente në Shëngjin Ameliani</h1>
+    <p>Pushime perfekte pranë detit 🌊</p>
+</header>
+
+<div class="container">
+    <h2>Apartamentet tona</h2>
+
+<div class="container">
+
+
+    <!-- APARTAMENT 1 -->
+    <div class="apartment-block">
+        <h3>Apartamenti 1</h3>
+
+        <div class="apartment-gallery">
+            <img src="IMG_6478.jpeg" onclick="openLightbox(this)">
+            <img src="IMG_6479.jpeg" onclick="openLightbox(this)">
+            <img src="IMG_6480.jpeg" onclick="openLightbox(this)">
+            <img src="IMG_6481.jpeg" onclick="openLightbox(this)">
+            <img src="IMG_6482.jpeg" onclick="openLightbox(this)">
+            <img src="IMG_6483.jpeg" onclick="openLightbox(this)">
+            <img src="IMG_6484.jpeg" onclick="openLightbox(this)">
+            <img src="IMG_6485.jpeg" onclick="openLightbox(this)">
+        </div>
+        <p class="ap1">🌊Apartamenti eshte i pershtatshem per 4 persona,dhe shume komod per pushimet tuaja te pa harrueshme!</p>
+    </div>
+
+    <!-- APARTAMENT 2 -->
+    <div class="apartment-block">
+        <h3>Apartamenti 2</h3>
+         <div class="apartment-gallery">
+            <img src="IMG_6467.jpeg" onclick="openLightbox(this)">
+            <img src="IMG_6469.jpeg" onclick="openLightbox(this)">
+            <img src="IMG_6470.jpeg" onclick="openLightbox(this)">
+            <img src="IMG_6471.jpeg" onclick="openLightbox(this)">
+            <img src="IMG_6472.jpeg" onclick="openLightbox(this)">
+            <img src="IMG_6473.jpeg" onclick="openLightbox(this)">
+            <img src="IMG_6474.jpeg" onclick="openLightbox(this)">
+            <img src="IMG_6476.jpeg" onclick="openLightbox(this)">
+        </div>
+        <p class="ap1">🌊Apartamenti ka pamjen me te mire ne vijen e pare bregdetare dhe eshte i pershtatshem per 5 persona,dhe shume komod per pushimet tuaja te pa harrueshme!</p>
+    </div>
+
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img">
+</div>
+
+<!-- CONTACT -->
+<div class="contact-section">
+    <h2>Na Kontaktoni</h2>
+
+    <div class="contact-container">
+
+        <div class="contact-info">
+            <div class="info-box">
+                <p><i class="fas fa-phone"></i> +355 69 432 6415</p>
+                <p><i class="fas fa-envelope"></i>arjanagjonpalaj@gmail.com</p>
+                <p><i class="fas fa-location-dot"></i> Shëngjin, Shqipëri</p>
+            </div>
+
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d371.829281419003!2d19.602667259741377!3d41.79309540285363!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1778352931845!5m2!1sen!2s"></iframe>
+            </div>
+        </div>
+
+        <form class="contact-form">
+            <input type="text" placeholder="Emri juaj" required>
+            <input type="email" placeholder="Email juaj" required>
+            <textarea placeholder="Mesazhi juaj..." required></textarea>
+            <button type="submit">Dërgo Mesazh</button>
+        </form>
+
+    </div>
+<div class="instagram">
+
+    <center><a href="https://instagram.com/banesa_ameliani" target="_blank" class="insta-btn">
+        <i class="fab fa-instagram"></i>
+        Na ndiqni në Instagram
+    </a></center>
+</div>
+
+
+<script>
+function openLightbox(img){
+    document.getElementById("lightbox").style.display="flex";
+    document.getElementById("lightbox-img").src=img.src;
+}
+
+function closeLightbox(){
+    document.getElementById("lightbox").style.display="none";
+}
+</script>
+
+</body>
+</html>      
